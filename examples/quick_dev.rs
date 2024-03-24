@@ -1,6 +1,7 @@
 #![allow(unused)]
 
 use anyhow::Result;
+use serde_json::json;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -8,7 +9,14 @@ async fn main() -> Result<()> {
 
     hc.do_get("/hello2/Mike").await?.print().await?;
 
-    hc.do_get("/src/main.rs").await?.print().await?;
+    let req_login = hc.do_post(
+        "/api/login",
+        json!({
+            "username": "demo1",
+            "pwd": "welcomeddd"
+        })
+    );
+    req_login.await?.print().await?;
 
     Ok(())
 }
