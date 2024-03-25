@@ -18,7 +18,7 @@ async fn api_login(cookies: Cookies, payload: Json<LoginPayload>) -> Result<Json
     }
 
     // FIXME: Implement real auth-token
-    cookies.add(Cookie::new(web::AUTH_TOKEN, "user-1.exp.sign"));
+    cookies.add(Cookie::new(web::AUTH_TOKEN, "DDDDuser-1.exp.sign"));
 
     // Create the success body
     let body = Json(json!({

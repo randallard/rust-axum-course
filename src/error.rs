@@ -8,6 +8,7 @@ pub enum Error {
     LoginFail,
 
     AuthFailNoAuthTokenCookie,
+    AuthFailTokenWrongFormat,
 
     TicketDeleteFailIdNotFound { id: u64 },
 }
