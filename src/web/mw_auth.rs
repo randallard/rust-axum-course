@@ -32,7 +32,7 @@ pub async fn mw_ctx_resolver<B>(
     mut req: Request<B>,
     next: Next<B>,
 ) -> Result<Response> {
-    println!("->> {:<12} - mw_ctx_resolver","MIDDLEWARE");
+    println!("->> {:<12} - mw_ctx_resolver", "MIDDLEWARE");
 
     let auth_token = cookies.get(AUTH_TOKEN).map(|c| c.value().to_string());
 
