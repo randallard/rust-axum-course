@@ -9,3 +9,5 @@ cargo watch -q -c -w src/ -x "run"
 # Terminal 2 - To run the tests.
 cargo watch -q -c -w examples/ -x "run --example quick_dev"
 ```
+
+continued at git@github.com:randallard/rust-web-app.git
