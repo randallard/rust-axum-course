@@ -1,4 +1,4 @@
-Started with Rust Axum Full Course - Web Development ( https://youtu.be/XZtlD_m59sM?si=okL6haG303i-ZSym )
+Left off at https://youtu.be/XZtlD_m59sM?si=DeI8er1swsKRdYmP&t=996
 
 ## Dev (REPL)
 
