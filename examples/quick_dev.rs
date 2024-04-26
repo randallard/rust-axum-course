@@ -7,12 +7,7 @@ use serde_json::json;
 #[tokio::main]
 async fn main() -> Result<()> {
     let hc = httpc_test::new_client("http://localhost:8080")?;
-
-    hc.do_get("/hello").await?.print().await?;
-    hc.do_get("/hello?name=Ryan").await?.print().await?;
     hc.do_get("/hello2/Ryan").await?.print().await?;
-    hc.do_get("/public/index.htm").await?.print().await?;
-    hc.do_get("/src/main.rs").await?.print().await?;
 
     let req_login = hc.do_post(
         "/api/login",
@@ -30,6 +25,8 @@ async fn main() -> Result<()> {
         }),
     );
     req_create_ticket.await?.print().await?; 
+
+    hc.do_delete("/api/tickets/1").await?.print().await?;
 
     hc.do_get("/api/tickets").await?.print().await?;
     

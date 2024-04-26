@@ -44,6 +44,7 @@ impl ModelController {
             id,
             title: ticket_fc.title,
         };
+
         store.push(Some(ticket.clone()));
 
         Ok(ticket)
