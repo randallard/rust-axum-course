@@ -4,17 +4,28 @@ pub use self::error::{Error, Result};
 
 use std::net::SocketAddr;
 
-use axum::{extract::{Path, Query}, response::{Html, IntoResponse}, routing::{get, get_service}, Router};
+use crate::model::ModelController;
+use axum::{extract::{Path, Query}, middleware, response::{Html, IntoResponse, Response}, routing::{get, get_service}, Router};
 use serde::Deserialize;
+use tower_cookies::CookieManagerLayer;
 use tower_http::services::ServeDir;
 
 mod error;
+mod model;
+mod web;
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<()> {
+    //Initialize ModelController
+    let mc = ModelController::new().await?;
+
     let routes_all = Router::new()
-    .merge(routes_hello())
-    .fallback_service(routes_static());
+        .merge(routes_hello())
+        .merge(web::routes_login::routes())
+        .nest("/api", web::routes_tickets::routes(mc.clone()))
+        .layer(middleware::map_response(main_response_mapper))
+        .layer(CookieManagerLayer::new())
+        .fallback_service(routes_static());
 
 // region:    --- Start Server
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
@@ -22,8 +33,17 @@ async fn main() {
     axum::Server::bind(&addr)
         .serve(routes_all.into_make_service())
         .await
-        .unwrap()
+        .unwrap();
 // endregion: --- Start Server
+
+    Ok(())
+}
+
+async fn main_response_mapper(res: Response) -> Response {
+    println!("->> {:<12} - main_response_mapper", "RES_MAPPER");
+
+    println!();
+    res
 }
 
 fn routes_static() -> Router {
