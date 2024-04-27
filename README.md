@@ -1,4 +1,4 @@
-Left off at https://youtu.be/XZtlD_m59sM?si=DeI8er1swsKRdYmP&t=996
+Left off at https://youtu.be/XZtlD_m59sM?si=HFQIoDLAHuxKSONO&t=2753
 
 ## Dev (REPL)
 
