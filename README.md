@@ -1,4 +1,5 @@
-Left off at https://youtu.be/XZtlD_m59sM?si=HFQIoDLAHuxKSONO&t=2753
+Left off at https://youtu.be/XZtlD_m59sM?si=eHzTZc27xV-7K35H&t=2993
+Start here for how to create your own extractor
 
 ## Dev (REPL)
 
